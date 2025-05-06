@@ -1,0 +1,14 @@
+# robots.txt for Document Viewer App
+User-agent: *
+Allow: /
+
+# Disallow search engines from crawling any user-uploaded files
+Disallow: /uploads/
+Disallow: /files/
+Disallow: /temp/
+
+# Rate limiting for crawlers
+Crawl-delay: 5
+
+# Sitemap location (uncomment and update if you implement a sitemap)
+# Sitemap: https://yourdomain.com/sitemap.xml
