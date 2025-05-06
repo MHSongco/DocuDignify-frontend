@@ -5,7 +5,7 @@ import './ResultsPanel.css';
 const ResultsPanel = ({ results }) => {
   if (!results) return null;
 
-  const { score, matches } = results;
+  const { score, excerpts } = results;
   
   // Determine score level
   const getScoreLevel = (score) => {
@@ -19,43 +19,35 @@ const ResultsPanel = ({ results }) => {
   return (
     <div className="results-panel">
       <div className="results-header">
-        <h2>Analysis Results</h2>
+        <h2>Content Analysis Results</h2>
         <div className={`score-indicator ${scoreLevel}`}>
           <div className="score-value">{score}%</div>
-          <div className="score-label">Similarity Score</div>
+          <div className="score-label">Misogyny Score</div>
         </div>
       </div>
       
       <div className="results-summary">
         <p>
           {scoreLevel === 'low' 
-            ? 'Low similarity detected. Your document appears to be mostly original.'
+            ? 'Low misogynistic content detected. The document appears to be relatively free of concerning content.'
             : scoreLevel === 'medium'
-              ? 'Medium similarity detected. Some portions of your document may require citation.'
-              : 'High similarity detected. Significant portions of your document match existing content.'}
+              ? 'Moderate levels of misogynistic content detected. Some portions of the document contain potentially problematic language.'
+              : 'High levels of misogynistic content detected. This document contains significant problematic language.'}
         </p>
       </div>
       
-      {matches && matches.length > 0 ? (
+      {excerpts && excerpts.length > 0 ? (
         <div className="matches-section">
-          <h3>Detected Matches</h3>
+          <h3>Detected Misogynistic Content</h3>
           <div className="matches-list">
-            {matches.map((match, index) => (
+            {excerpts.map((excerpt, index) => (
               <div key={index} className="match-item">
                 <div className="match-text">
-                  <p className="matched-content">"{match.text}"</p>
+                  <p className="matched-content">"{excerpt.text}"</p>
                   <div className="match-info">
                     <span className="similarity-badge">
-                      {match.similarity}% similar
+                      {Math.round(excerpt.confidence)}% confidence
                     </span>
-                    <a 
-                      href={match.sourceUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="source-link"
-                    >
-                      View Source
-                    </a>
                   </div>
                 </div>
               </div>
@@ -64,7 +56,7 @@ const ResultsPanel = ({ results }) => {
         </div>
       ) : (
         <div className="no-matches">
-          <p>No specific matches found.</p>
+          <p>No misogynistic content detected.</p>
         </div>
       )}
       

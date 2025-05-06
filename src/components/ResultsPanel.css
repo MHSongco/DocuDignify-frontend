@@ -1,6 +1,5 @@
-
-  /* ResultsPanel.css */
-  .results-panel {
+/* ResultsPanel.css */
+.results-panel {
     width: 320px;
     background-color: white;
     border-radius: 8px;
@@ -33,6 +32,7 @@
     position: relative;
   }
   
+  /* Changed colors for misogyny rather than plagiarism */
   .score-indicator.low {
     background-color: #e6f4ea;
     color: #137333;
@@ -74,6 +74,7 @@
     font-size: 1rem;
     margin-bottom: 15px;
     font-weight: 600;
+    color: #c5221f; /* Red color for the heading */
   }
   
   .matches-list {
@@ -100,39 +101,35 @@
   .matched-content {
     margin-bottom: 10px;
     line-height: 1.5;
-    color: #555;
+    color: #c5221f; /* Red text for misogynistic content */
     font-style: italic;
+    background-color: rgba(244, 67, 54, 0.05);
+    padding: 10px;
+    border-radius: 4px;
   }
   
   .match-info {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
   }
   
   .similarity-badge {
-    background-color: #f2f2f2;
+    background-color: #fce8e6;
+    color: #c5221f;
     padding: 3px 8px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 500;
   }
   
-  .source-link {
-    color: #4a6cf7;
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 500;
-  }
-  
-  .source-link:hover {
-    text-decoration: underline;
-  }
-  
   .no-matches {
     padding: 20px;
     text-align: center;
-    color: #888;
+    color: #137333;
+    background-color: #e6f4ea;
+    border-radius: 4px;
+    margin: 0 20px;
   }
   
   .results-actions {

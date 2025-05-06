@@ -4,7 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document Viewer App</title>
+    <meta name="description" content="Document Viewer App for analyzing documents for misogynistic content" />
+    <meta name="theme-color" content="#4a6cf7" />
+    
+    <!-- Preload PDF.js libraries -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    
+    <!-- Load PDF.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script>
+      // Define the worker source
+      window.pdfjsLib = window['pdfjs-dist/build/pdf'];
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+    </script>
+    
+    <title>Document Content Analysis Tool</title>
   </head>
   <body>
     <div id="root"></div>
