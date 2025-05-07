@@ -9,7 +9,8 @@ const ResultsPanel = ({ results }) => {
   
   // Determine score level
   const getScoreLevel = (score) => {
-    if (score < 20) return 'low';
+    if (score < 1) return 'none';
+    if (score < 5) return 'low';
     if (score < 50) return 'medium';
     return 'high';
   };
@@ -21,14 +22,17 @@ const ResultsPanel = ({ results }) => {
       <div className="results-header">
         <h2>Content Analysis Results</h2>
         <div className={`score-indicator ${scoreLevel}`}>
-          <div className="score-value">{score}%</div>
+          <div className="score-value">{Math.trunc(score)}%</div>
           <div className="score-label">Misogyny Score</div>
         </div>
       </div>
       
       <div className="results-summary">
         <p>
-          {scoreLevel === 'low' 
+          { scoreLevel === 'none'
+            ? 'No misogynistic content detected. The document appears to be free of concerning content.'
+            :
+            scoreLevel === 'low' 
             ? 'Low misogynistic content detected. The document appears to be relatively free of concerning content.'
             : scoreLevel === 'medium'
               ? 'Moderate levels of misogynistic content detected. Some portions of the document contain potentially problematic language.'
