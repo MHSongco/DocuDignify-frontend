@@ -1,6 +1,6 @@
 # Document Viewer App
 
-A React-based web application for viewing and analyzing document files (PDF, DOC, DOCX, and ODT) with an interface similar to QuillBot's plagiarism checker.
+A React-based web application for viewing and analyzing document files (PDF, DOC, DOCX, and ODT).
 
 ## Features
 
